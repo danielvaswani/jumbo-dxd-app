@@ -1,0 +1,81 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* Add your desired background color */
+    z-index: 1000; /* Ensure the header stays on top */
+  }
+  
+  .content {
+    margin-top: 50px; /* Adjust the margin based on the height of your header */
+    padding: 20px; /* Add padding to create space for the fixed header */
+    width: 100%;
+  }
+.refresh-btn{
+    width: 103px;
+height: 35px;
+border-radius: 100px;
+border: 1px solid #D9D9D9;
+background-color: transparent;
+color: #000;
+text-align: center;
+line-height: 5px; 
+vertical-align: middle; 
+}
+.personalized-recipe-btn{
+    background-color: #2d8144;
+    width: 358.082px;
+    height: 96px;
+flex-shrink: 0;
+border-radius: 15px 15px 0px 15px;
+margin-left: -51%;
+text-align: left;
+
+    margin-top: 60%;
+
+
+
+}
+.p-1{
+    color: #FFF;
+font-family: Jumbo TheSans;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+
+}
+.p-2{
+    color: #FFF;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px; /* 122.222% */
+}
+.image-container-1{
+    margin-left: 71%;
+    margin-top: -25%;
+}
+.image-container-2{
+    margin-left: 90%;
+    margin-top: 0.8%;
+}
+.text-container{
+    margin-top: 5%;
+}
+.product-container-header{
+    display: flex;
+    flex-direction: column;
+}
+ .product-container{
+    display: flex;
+    flex-direction: row;
+ } 

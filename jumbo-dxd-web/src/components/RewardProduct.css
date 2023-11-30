@@ -1,0 +1,12 @@
+/* Your existing styles for .reward-product */
+.reward-product {
+    width: 192.375px;
+    height: 200.109px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #E2E2E2;
+    color: black;
+    margin: 10px; /* Add margin for spacing between cards */
+  }
+  
+  /* New styles to create a flex container as a row */
