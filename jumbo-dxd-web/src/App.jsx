@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import './RecipePage'
+import RecipePage from './RecipePage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,7 +19,8 @@ function App() {
 
   return (
     <>
-      <h1>Recipes</h1>
+    <RecipePage/>
+
       {recipes[0]}
     </>
   )

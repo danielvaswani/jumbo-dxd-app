@@ -1,0 +1,106 @@
+
+
+.recipe-page {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid black; 
+    border-radius: 10px;
+    padding: 20px; 
+  }
+
+  
+.icon-text-container {
+    margin-left: 10px; 
+  }
+  
+  .recipe-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .recipe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .recipe-title {
+    font-size: 24px;
+    color: black;
+  }
+  
+  .heart-icon {
+    font-size: 24px;
+    color: black;
+  }
+
+    .green-leaf {
+    color: green;
+    margin-right: 5px; /* Optional: Add some space between the icon and text */
+  }
+  
+  
+  .icon-list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: black;
+  }
+  
+  .icon-item {
+    
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .icon-item img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  .section-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  .ingredients-list,
+  .instructions-list {
+    margin-top: 10px;
+    text-align: left;
+     color: black;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    margin-top: 20px;
+  }
+  
+  .buy-button,
+  .suggest-button {
+    display: flex;
+    width: 160px;
+    height: 42px;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 50px;
+  }
+  
+  .buy-button {
+    background-color: #EEB717;
+    color: black;
+  }
+  
+  .suggest-button {
+    background-color: #2d8144;
+    color: white;
+    margin-left: 15px; /* Adjust the margin between buttons */
+  }
+  
