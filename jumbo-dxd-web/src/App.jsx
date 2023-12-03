@@ -11,11 +11,13 @@ import RecipePage from "./RecipePage";
 function App() {
   const [recipePage, setRecipePage] = useState(1);
   const [recipes, setRecipes] = useState([]);
+  const [currentRecipe, setCurrentRecipe] = useState([]);
   
   const fetchData = async () => {
     const data = await getRecipes(recipePage);
     console.log(data);
     setRecipes(data);
+    setCurrentRecipe(data[0]);
   };
 
   useEffect(() => {
@@ -59,13 +61,13 @@ function App() {
   return (
     <>
       <RecipePage
-        ingredients={recipesHardCoded[0].ingredients}
-        instructions={recipesHardCoded[0].instructions}
-        title={recipesHardCoded[0].title}
-        image={recipesHardCoded[0].image}
-        servings={recipesHardCoded[0].servings}
-        dishType={recipesHardCoded[0].dishType}
-        cookingTime={recipesHardCoded[0].cookingTime}
+        ingredients={currentRecipe.ingredients.map(i => i.name )}
+        instructions={currentRecipe.instructions}
+        title={currentRecipe.title}
+        image={currentRecipe.imageInfo[10].url}
+        servings={currentRecipe.servingSize.value}
+        dishType={currentRecipe.dishInfo.course[0]}
+        cookingTime={currentRecipe.timings[0].amount}
       />
 
       <h1>Recipes</h1>

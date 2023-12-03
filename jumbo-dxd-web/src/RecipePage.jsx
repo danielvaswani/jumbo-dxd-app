@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { faClock, faUtensils, faUsers, faHeart as faHeartRegular } from '@fortawesome/free-solid-svg-icons';
 import './RecipePage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const RecipePage = (props) => {
+
+  useEffect(() => {
+    console.log("RecipePage mounted")
+    console.log(props)
+  },[])
+
 
   return (
     <div className="recipe-page">
@@ -42,14 +48,14 @@ const RecipePage = (props) => {
           
       
       {/* Ingredients */}
-      <div className="ingredients-list">
+      {/* <div className="ingredients-list">
         <p className="section-title">Ingredients</p>
         <ul>
           {props.ingredients.map((ingredient, index) => (
             <li key={index}>{ingredient}</li>
           ))}
         </ul>
-      </div>
+      </div> */}
 
       {/* Instructions */}
       <div className="instructions-list">
