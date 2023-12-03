@@ -1,26 +1,35 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+import { getRecipes } from "./store/recipes";
 
 function App() {
-  const [count, setCount] = useState(0)
-  let [recipes, setRecipes] = useState([])
+  const [recipePage, setRecipePage] = useState(1);
+  const [recipes, setRecipes] = useState([]);
+  const fetchData = async () => {
+    const data = await getRecipes(recipePage);
+    console.log(data);
+    setRecipes(data);
+  };
 
   useEffect(() => {
-    //fetch recipes from recipes-oct-2.json
-      const data = fetch('./recipes-oct-2.json')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setRecipes([recipes, data])
-      })
-    }, [])
+    fetchData();
+  }, [recipePage]);
+
+  const handleNextPage = () => {
+    setRecipePage(recipePage + 1);
+  };
 
   return (
     <>
       <h1>Recipes</h1>
-      {recipes[0]}
+      {recipes.map((recipe) => (
+        <div key={recipe._id} style={{ display: "flex" }}>
+          <h2>{recipe.title}</h2>
+          <img src={recipe.imageInfo[0].url} alt={recipe.title + " image"} />
+        </div>
+      ))}
     </>
-  )
+  );
 }
 
 export default App;
