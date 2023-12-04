@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import "./RecipePage";
+import React from "react";
+import Carousel from './Carousel';
+import RecipeCarousel from "./RecipeCarousel";
 import RecipesDataExample from "./RecipesDataExample";
-
-import RecipePage from "./RecipePage";
+import "./App.css";
 
 function App() {
   return (
-    <>
+    <div className="App">
+      <Carousel  />
+      <RecipeCarousel />
       <RecipesDataExample />
-    </>
+    </div>
   );
 }
 
