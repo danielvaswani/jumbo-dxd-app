@@ -36,7 +36,7 @@ const data = [
 const settings = {
   infinite: true,
   speed: 500,
-  slidesToShow: 1,
+  slidesToShow: 2,
   slidesToScroll: 1,
   swipeToSlide: true,
   arrows: false,

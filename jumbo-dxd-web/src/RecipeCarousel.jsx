@@ -1,3 +1,4 @@
+// RecipeCarousel.jsx
 import React from 'react';
 import Slider from 'react-slick';
 
@@ -8,35 +9,25 @@ import pastaImage from './assets/pasta1.jpeg';
 
 const data = [
   {
-   title: 'Classic tomato basil pasta',
+    title: '1 Classic tomato basil pasta',
     text: 'Excluding fresh- and gingerbread',
     imageUrl: pastaImage,
   },
   {
-    title: 'Classic tomato basil pasta',
-     text: 'Excluding fresh- and gingerbread',
-     imageUrl: pastaImage,
-   },
-   {
-    title: 'Classic tomato basil pasta',
-     text: 'Excluding fresh- and gingerbread',
-     imageUrl: pastaImage,
-   },
-   {
-    title: 'Classic tomato basil pasta',
-     text: 'Excluding fresh- and gingerbread',
-     imageUrl: pastaImage,
-   },
-//  more recipes 
+    title: '2 Classic tomato basil pasta',
+    text: 'Excluding fresh- and gingerbread',
+    imageUrl: pastaImage,
+  },
+  
+  // more recipes
 ];
 
 const settings = {
   infinite: true,
   speed: 500,
-  slidesToShow: 2,
+  slidesToShow: 1,
   slidesToScroll: 1,
   swipeToSlide: true,
-  arrows: true,
   responsive: [
     {
       breakpoint: 390,
@@ -49,26 +40,24 @@ const settings = {
   ],
 };
 
-const HorizontalCarousel = () => {
+const RecipeCarousel = () => {
   return (
     <div className="carousel-container">
       <h1 className="carousel-title">Seasonal Recipes</h1>
-      <p className="carousel-description">The most delicious recipes at the moment.</p>
+      <p className="carousel-description">The most delicious recipes.</p>
       <Slider className='slider' {...settings}>
         {data.map((item, index) => (
-          <div key={index} className="rounded-card green-card">
-            <div className='imageCard'>
-              <img src={item.imageUrl} alt={item.title} />
-            </div>
-            <div className='cardContent'>
-              <h2 className='cardTitle'>{item.title}</h2>
-              <p className='greydescription'>{item.text}</p>
-            </div>
-          </div>
+           <div key={index} className="rounded-card green-card">
+           <img className='imageCard' src={item.imageUrl} alt={item.title} />
+           <div className='cardContent'>
+             <h2 className='itemtitle'>{item.title}</h2>
+             <p className='greydescription'>{item.text}</p>
+           </div>
+         </div>
         ))}
       </Slider>
     </div>
   );
 };
 
-export default HorizontalCarousel;
+export default RecipeCarousel;
