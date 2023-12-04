@@ -5,11 +5,13 @@ import Points from './img/Points.png'
 import food1 from './img/image 4.png'
 import food2 from './img/image 5.png'
 import RewardProduct from "./components/RewardProduct";
+import './index.css'
 
 const RewardProducts = [{title: "Cookie"}, {title: "Beans"}, {title: "Pizza"}]
 
 const HomeScreen = () => {
     return(
+
 <div className="homepage">
   <div className="header">
     <img src={CustomerCard} alt={CustomerCard} />
@@ -32,7 +34,14 @@ const HomeScreen = () => {
 </button>
   
 </div>
-<div className="product-container">
+
+<div className="carousel2">
+
+</div>
+
+<div className="py-44"> 
+
+
       {RewardProducts.map((product) => (
         <RewardProduct title={product.title} image={product.image} description={product.description} />
       ))}

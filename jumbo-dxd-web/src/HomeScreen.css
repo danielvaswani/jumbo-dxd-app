@@ -3,15 +3,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
-  
+  .content{
+
+  }
   .header {
-    position: absolute;
-    top: 0;
-    left: 0;
+  
+margin-left: 0  auto ;
+margin-top: auto;
     width: 100%;
     background-color: #ffffff; /* Add your desired background color */
-    z-index: 1000; /* Ensure the header stays on top */
+    display: flex;
+    flex-direction: column;
+
   }
   
   .content {
@@ -32,18 +37,13 @@ vertical-align: middle;
 }
 .personalized-recipe-btn{
     background-color: #2d8144;
-    width: 358.082px;
+    width: 100%;
     height: 96px;
 flex-shrink: 0;
 border-radius: 15px 15px 0px 15px;
-margin-left: -51%;
 text-align: left;
-
-    margin-top: 60%;
-
-
-
 }
+
 .p-1{
     color: #FFF;
 font-family: Jumbo TheSans;
@@ -78,4 +78,11 @@ line-height: 22px; /* 122.222% */
  .product-container{
     display: flex;
     flex-direction: row;
+    width: 100%;
  } 
+
+ .carousel2 {
+    background-color: red;
+    width: 100%;
+    height: 300px;
+ }
