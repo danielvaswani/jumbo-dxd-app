@@ -39,13 +39,14 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   swipeToSlide: true,
+  arrows: false,
   responsive: [
     {
       breakpoint: 390,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 2,
         slidesToScroll: 1,
-        initialSlide: 4,
+        initialSlide: 1,
       },
     },
   ],

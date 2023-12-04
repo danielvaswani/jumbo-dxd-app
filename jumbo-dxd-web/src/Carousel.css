@@ -11,13 +11,13 @@
 .rounded-card {
     display: flex;
     width: 80%; /* Adjust the width as needed */
-    max-width: 300px; 
+    max-width: 230px; 
     height: 300px;
     border: 1px solid black;
     border-radius: 15px;
     overflow: hidden;
     background-color: white;
-    margin-right: 10px;
+    margin-right: 20px;
   }
   
   .imageCard {
