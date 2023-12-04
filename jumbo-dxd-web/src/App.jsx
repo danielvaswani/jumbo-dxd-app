@@ -1,26 +1,28 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import React from 'react';
+import Carousel from './Carousel';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-  let [recipes, setRecipes] = useState([])
-
-  useEffect(() => {
-    //fetch recipes from recipes-oct-2.json
-      const data = fetch('./recipes-oct-2.json')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setRecipes([recipes, data])
-      })
-    }, [])
+  const mockRecipes = [
+    {
+      title: 'Recipe 1',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      imageUrl: 'path-to-your-image-1.jpg',
+    },
+    {
+      title: 'Recipe 2',
+      text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      imageUrl: 'path-to-your-image-2.jpg',
+    },
+    // Add more mock data as needed
+  ];
 
   return (
-    <>
-      <h1>Recipes</h1>
-      {recipes[0]}
-    </>
-  )
+    <div className="App">
+      <Carousel data={mockRecipes} />
+      
+    </div>
+  );
 }
 
 export default App;
