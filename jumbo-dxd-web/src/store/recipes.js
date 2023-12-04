@@ -16,6 +16,16 @@ export const getRecipes = async (pageNumber = 1) => {
         const docData = doc.data();
         if (docData) data.push(docData);
     });
-    return data;
+    console.log(data);
+    return data.map((recipe) => ({
+        _id: recipe._id,
+        ingredients: recipe.ingredients.map((i) => i.name),
+        instructions: recipe.instructions,
+        title: recipe.title,
+        image: recipe.imageInfo.filter((i) => i.width === 560)[0].url,
+        servings: recipe.servingSize.value,
+        dishType: recipe.dishInfo.course[0].charAt(0).toUpperCase() + recipe.dishInfo.course[0].slice(1),
+        cookingTime: recipe.timings[0].amount,
+    }));
 };
 
