@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./RecipePage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation } from "react-router-dom";
 
 // const recipesHardCoded = [
 //   {
@@ -40,14 +41,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // ];
 
 const RecipePage = (props) => {
+  const location = useLocation();
+  const { recipe } = location.state;
+
   return (
     <div className="recipe-page">
       {/* Image */}
-      <img src={props.recipe.image} alt="Recipe" className="recipe-image" />
+      <img src={recipe.image} alt="Recipe" className="recipe-image" />
 
       {/* Recipe Title and Icon */}
       <div className="recipe-header">
-        <h1 className="recipe-title">{props.recipe.title}</h1>
+        <h1 className="recipe-title">{recipe.title}</h1>
         <span className="heart-icon">
           <FontAwesomeIcon icon={faHeartRegular} />
         </span>
@@ -58,19 +62,19 @@ const RecipePage = (props) => {
         <div className="icon-item">
           <FontAwesomeIcon icon={faClock} />
           <div className="icon-text-container">
-            <p>{props.recipe.cookingTime} min</p>
+            <p>{recipe.cookingTime} min</p>
           </div>
         </div>
         <div className="icon-item">
           <FontAwesomeIcon icon={faUtensils} />
           <div className="icon-text-container">
-            <p>{props.recipe.dishType}</p>
+            <p>{recipe.dishType}</p>
           </div>
         </div>
         <div className="icon-item">
           <FontAwesomeIcon icon={faUsers} />
           <div className="icon-text-container">
-            <p>{props.recipe.servings} people</p>
+            <p>{recipe.servings} people</p>
           </div>
         </div>
       </div>
@@ -79,7 +83,7 @@ const RecipePage = (props) => {
       <div className="ingredients-list">
         <p className="section-title">Ingredients</p>
         <ul>
-          {props.recipe.ingredients.map((ingredient, index) =>
+          {recipe.ingredients.map((ingredient, index) =>
             Math.random() > 0.25 ? (
               <li key={index}>{ingredient}</li>
             ) : (
@@ -96,7 +100,7 @@ const RecipePage = (props) => {
       <div className="instructions-list">
         <p className="section-title">Instructions</p>
         <ol>
-          {props.recipe.instructions.map((instruction, index) => (
+          {recipe.instructions.map((instruction, index) => (
             <li key={index}>{instruction}</li>
           ))}
         </ol>

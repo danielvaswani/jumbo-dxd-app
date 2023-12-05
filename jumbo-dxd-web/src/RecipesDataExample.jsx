@@ -1,17 +1,22 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { getRecipes } from "./store/recipes";
-import RecipePage from "./RecipePage";
+import { useNavigate } from "react-router-dom";
 
 const RecipesDataExample = () => {
   const [recipePage, setRecipePage] = useState(1);
   const [recipes, setRecipes] = useState([]);
-  const [currentRecipe, setCurrentRecipe] = useState(null);
+
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     const data = await getRecipes(recipePage);
     setRecipes(data);
-    setCurrentRecipe(data[0]);
+  };
+
+  const openRecipe = (event, id) => {
+    const recipe = recipes.find((recipe) => recipe._id === id);
+    navigate(`/recipe/${id}`, { state: { recipe: recipe } });
   };
 
   useEffect(() => {
@@ -20,11 +25,14 @@ const RecipesDataExample = () => {
 
   return (
     <>
-      {!!currentRecipe && <RecipePage recipe={currentRecipe} />}
-
+      {/* {currentRecipe && <RecipePage recipe={currentRecipe} />} */}
       <h1>Recipes</h1>
       {recipes.map((recipe) => (
-        <div key={recipe._id} style={{ display: "flex" }}>
+        <div
+          key={recipe._id}
+          style={{ display: "flex" }}
+          onClick={(event) => openRecipe(event, recipe._id)}
+        >
           <h2>{recipe.title}</h2>
           <img src={recipe.image} alt={recipe.title + " image"} />
         </div>
