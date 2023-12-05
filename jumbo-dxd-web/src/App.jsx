@@ -3,6 +3,7 @@ import Carousel from './Carousel';
 import RecipeCarousel from "./RecipeCarousel";
 import RecipesDataExample from "./RecipesDataExample";
 import "./App.css";
+import HomeScreen from './HomeScreen'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Carousel  />
       <RecipeCarousel />
       <RecipesDataExample />
+      <HomeScreen />
     </div>
   );
 }
