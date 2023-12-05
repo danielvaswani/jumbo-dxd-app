@@ -44,6 +44,10 @@ const RecipePage = (props) => {
   const location = useLocation();
   const { recipe } = location.state;
 
+  useEffect(() => {
+    setTimeout(() => window.scrollTo(0, localStorage.getItem("position")), 0);
+  }, []);
+
   return (
     <div className="recipe-page">
       {/* Image */}
