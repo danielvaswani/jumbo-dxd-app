@@ -1,0 +1,17 @@
+.search-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0; /* Optional: Remove default margin for a cleaner look */
+  }
+  
+  .search-component input {
+    border-radius: 30px;
+    border: 1px solid #000;
+    background: #FFF;
+    width: 350px;
+    padding: 10px; /* Optional: Add some padding for better visual appearance */
+  }
+  
