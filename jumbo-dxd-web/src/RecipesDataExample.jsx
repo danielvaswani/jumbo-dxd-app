@@ -26,7 +26,7 @@ const RecipesDataExample = () => {
   return (
     <>
       {/* {currentRecipe && <RecipePage recipe={currentRecipe} />} */}
-      <h1>Recipes</h1>
+      {/* <h1>Recipes</h1> */}
       {recipes.map((recipe) => (
         <div
           key={recipe._id}

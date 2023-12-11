@@ -5,22 +5,33 @@ import Points from './img/Points.png'
 import food1 from './img/image 4.png'
 import food2 from './img/image 5.png'
 import RewardProduct from "./components/RewardProduct";
+import HorizontalCarousel from "./Carousel";
+import RecipeCarousel from "./RecipeCarousel";
+import RecipesDataExample from "./RecipesDataExample";
+import { useNavigate } from "react-router-dom";
+
 import './index.css'
 
 const RewardProducts = [{title: "Cookie"}, {title: "Beans"}, {title: "Pizza"}]
 
 const HomeScreen = () => {
+  const navigate = useNavigate();
+  const openSustainable = () => {
+    navigate(`/sustainable/`);
+  };
+  
     return(
-
+<>
 <div className="homepage">
   <div className="header">
     <img src={CustomerCard} alt={CustomerCard} />
     <img src={Points} alt={Points} />
-    <button className="refresh-btn">Refresh</button>
+    <div className="flex-btn"> <button className="refresh-btn">Refresh</button></div>
+   
   </div>
   <div className="content">
    
-    <button className="personalized-recipe-btn">
+    <button onClick={openSustainable} className="personalized-recipe-btn">
       <div className="text-container">
         <div className="p-1">Deliciously clever!</div>
         <div className="p-2">Your recipes in your style!</div>
@@ -35,20 +46,21 @@ const HomeScreen = () => {
   
 </div>
 
-<div className="carousel2">
 
-</div>
+  <HorizontalCarousel/>
+  <RecipeCarousel />
 
 <div className="py-44"> 
 
-
-      {RewardProducts.map((product) => (
+      {/* {RewardProducts.map((product) => (
         <RewardProduct title={product.title} image={product.image} description={product.description} />
-      ))}
+      ))} */}
       </div>
       <button>Check out all rewardproducts</button>
 
 </div>
+<RecipesDataExample />
+</>
     )
 
 }

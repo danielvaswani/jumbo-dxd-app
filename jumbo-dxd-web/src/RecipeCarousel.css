@@ -5,11 +5,12 @@
 }
 
 .slider{
-  max-width: 26%;
+  max-width: 29%;
 }
 
 .rounded-card {
   display: flex;
+  flex-direction: column;
   width: 80%; /* Adjust the width as needed */
   max-width: 180px; 
   height: 100px;

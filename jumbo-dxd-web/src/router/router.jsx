@@ -3,6 +3,7 @@ import {
   } from "react-router-dom";
 import RecipePage from "../RecipePage.jsx";
 import Root from "./root.jsx";
+import SustainableRecipe from "../SustainableRecipe.jsx";
   
   const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ import Root from "./root.jsx";
     {
       path: "/recipe/:recipeId",
       element: <RecipePage/>
+    },
+    {
+      path: "/sustainable",
+      element: <SustainableRecipe/>
     },
   ]);
 

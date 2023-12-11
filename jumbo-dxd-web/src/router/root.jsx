@@ -1,8 +1,8 @@
 import React from "react";
-import App from "../App";
+import HomeScreen from "../HomeScreen";
 
 const Root = () => {
-  return <App />;
+  return <HomeScreen />;
 };
 
 export default Root;
