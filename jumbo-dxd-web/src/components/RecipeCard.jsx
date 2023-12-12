@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   addRecipeToFavorites,
   getIsHearted,
@@ -46,13 +47,14 @@ export const RecipeCard = (props) => {
 
   return (
     <div
-      className={`rounded-xl flex items-center gap-3 p-2 ${
+      className={`rounded-xl text-overflow-clamp flex items-center gap-3 p-2 ${
         alternateColor ? "bg-white" : "bg-green-500"
       }`}
       style={{
         backgroundColor: alternateColor ? "#ffffff" : " #2d8144",
         border: "1px solid #E2E2E2",
         borderStyle: alternateColor ? "solid" : "none",
+        position: "relative"
       }}
       key={r._id}
       onClick={() => handleClick(r._id)}
@@ -60,11 +62,12 @@ export const RecipeCard = (props) => {
       <div onClick={toggleHeart} style={{ cursor: "pointer" }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill={heart ? "pink" : "none"}
+          fill={heart ? "#DD2E44" : "none"}
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke={heart ? "pink" : "white"}
-          className="w-6 h-6"
+          stroke={heart ? "#DD2E44" : "white"}
+          className="w-6 h-6 absolute top-2 right-2"
+
         >
           <path
             strokeLinecap="round"
@@ -76,7 +79,8 @@ export const RecipeCard = (props) => {
       <img src={r.image} className="w-24 h-24 rounded-xl" alt={r.title} />
       <div className="recipe-extras w-48">
         <h3
-          className="text-sm font-bold"
+          className="text-sm font-bold h-12  overflow-y-clip "
+
           style={{ color: alternateColor ? "#000000" : "#ffffff" }}
         >
           {r.title}
