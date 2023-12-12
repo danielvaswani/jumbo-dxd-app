@@ -56,6 +56,7 @@ const AiGeneratedRecipe = () => {
     }
   };
 
+
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -64,6 +65,9 @@ const AiGeneratedRecipe = () => {
     event.preventDefault();
     generateContent();
   };
+
+  
+  console.log(generatedDescription);
 
   return (
     <div className='ai-image-generator'>
