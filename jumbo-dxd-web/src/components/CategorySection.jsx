@@ -8,18 +8,24 @@ const CategorySection = (props) => {
 
     return (
       <div className="category-section">
-         <h2>{category.title}</h2>
+         <h3>{category.title}</h3>
          <p>{category.description}</p>
+         <div className="recipe-cards-container">
          {category.recipeList.map(r => {
             return (
+              
                 <div className="recipe-card">
                 <img src={r.image} alt={r.title} />
-               <h2>{r.title}</h2>
-               <p>{r.description}</p>
+                <div className="recipe-extras">
+               <h3>{r.title}</h3>
+            
+               <p>{r.numberOfIngredients} Ingredients</p>
+               <p>{r.prepTime} Minutes</p>
+                </div>
                 </div>
             )
          })}
-       
+          </div>
       
       </div>
     );

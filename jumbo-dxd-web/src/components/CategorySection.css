@@ -1,4 +1,26 @@
 .recipe-card{
-    background-color: blue;
+    background-color: #2d8144;
     color: black;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    padding: 20px;
+}
+.category-section{
+    padding: 20px;
+}
+.recipe-cards-container{
+    
+    display: flex;
+    flex-direction: row;
+    gap: 20px; 
+    overflow-x: scroll;
+    width: 100vw;
+}
+.recipe-extras{
+    margin: 0;
+ 
+    display: flex;
+    flex-direction: column;
+
 }
