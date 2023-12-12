@@ -32,7 +32,7 @@ const categories = [
     {
         title: "Seasonal Recipes",
         description: "The most delicious recipes at the moment.",
-        recipeList: mockRecipeList
+        recipeList: mockRecipeList,
     },
     {
         title: "Comfort meals",
@@ -51,9 +51,15 @@ const categories = [
     },
 ]
 
+const favoriteRecipe = {
+    title: "Challenging recipes",
+    description: "Push yourself to try something new!",
+    recipeList: mockRecipeList,
+}
+
 const SustainableRecipe=()=>{
 return(
-<div>
+<div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
     <DeliciouslyClever/>
     <img alt='header' src={header}></img>
     <SearchBar/>
@@ -61,9 +67,27 @@ return(
       {tags.map(t => <span className="filter-tag">{t}</span>)}
       
       </div>
+      <div className="cards">
+<h2>What are we eating today?</h2>
+<p>Fast and healthy recipes</p>
+<p>Every day thinking about what to cook can be a challenge, 
+    especially when you want to quickly put a tasty and healthy 
+    meal on the table.
+     At Jumbo, we're happy to assist you with recipes that meet 
+     these requirements.</p>
+
+      </div>
       {
-        categories.map(c => <CategorySection category={c} />)
+        categories.map(c => <CategorySection category={c}/>)
       }
+      <div className="cards">
+<h2>Recipes for
+ every occasion</h2>
+
+<p>A delicious recipe for a relaxing Sunday morning breakfast, a simple take-away lunch, a vegetarian pasta dish, and even fun baking recipes to make with kids - whatever you have in mind, Jumbo is ready to inspire you with a wide range of recipes ..</p>
+      </div>
+      <CategorySection category={favoriteRecipe} alternateColor/>
+     
 </div>
 );
 };
