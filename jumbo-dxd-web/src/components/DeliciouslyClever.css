@@ -5,7 +5,7 @@
 }
 
 .clever-header {
-    width: 370px;
+   
   
     background-color: #2d8144;
    
@@ -28,6 +28,7 @@ overflow: hidden;
 .clever-header h2{
     color: #FFF;
     font-size: 22px;
+
 }
 .clever-header img{
     margin-right: auto;

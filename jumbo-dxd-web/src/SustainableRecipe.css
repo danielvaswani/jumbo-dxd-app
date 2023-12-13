@@ -24,6 +24,6 @@
    
 }
 
-  .cards p,h2{
+  .cards p, .cards h2{
     text-align: center !important;
   }

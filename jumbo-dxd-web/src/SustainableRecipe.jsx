@@ -52,8 +52,8 @@ const categories = [
 ]
 
 const favoriteRecipe = {
-    title: "Challenging recipes",
-    description: "Push yourself to try something new!",
+    title: "Favorite recipes",
+    description: "These recipes really fit you!",
     recipeList: mockRecipeList,
 }
 
