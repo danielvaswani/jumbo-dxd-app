@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+
 
 const AiGeneratedRecipe = () => {
   const [image_url, setImage_url] = useState('/');
   const [generatedDescription, setGeneratedDescription] = useState('');
-  const [inputValue, setInputValue] = useState('');
   const inputRef = useRef(null);
 
-  const generateContent = async () => {
+  const generateContent = async (inputValue) => {
     try {
       const imageResponse = await fetch(
         'https://api.openai.com/v1/images/generations',
@@ -14,7 +14,7 @@ const AiGeneratedRecipe = () => {
           method: 'POST',
           headers: {
             'Content-type': 'application/json',
-            Authorization: 'Bearer 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',
+            Authorization: import.meta.env.VITE_OPENAI_API_KEY,
             'User-Agent': 'Chrome',
           },
           body: JSON.stringify({
@@ -29,19 +29,26 @@ const AiGeneratedRecipe = () => {
       const imageUrl = imageData.data[0].url;
       setImage_url(imageUrl);
 
-      const descriptionResponse = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer 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',
-        },
-        body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: [
-            { role: 'system', content: `Give ingredients and description of ${inputValue} and keep it consistent and list the ingredients seperstely and description in steps below` },
-          ],
-        }),
-      });
+      const descriptionResponse = await fetch(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'Bearer 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',
+          },
+          body: JSON.stringify({
+            model: 'gpt-3.5-turbo',
+            messages: [
+              {
+                role: 'system',
+                content: `Give ingredients and description of ${inputValue} and keep it consistent and list the ingredients seperstely and description in steps below`,
+              },
+            ],
+          }),
+        }
+      );
 
       if (!descriptionResponse.ok) {
         const errorData = await descriptionResponse.json();
@@ -56,18 +63,21 @@ const AiGeneratedRecipe = () => {
     }
   };
 
+  useEffect(() => {
+    // Generate a random prompt for a recipe on page load
+    const recipes = [
+      'Pasta Carbonara',
+      'Chicken Stir-Fry',
+      'Vegetable Lasagna',
+      'Chocolate Cake',
+      // Add more recipe prompts as needed
+    ];
+    const randomIndex = Math.floor(Math.random() * recipes.length);
+    const randomRecipe = recipes[randomIndex];
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
+    generateContent(randomRecipe); // Call generateContent with the random recipe
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    generateContent();
-  };
-
-  
-  console.log(generatedDescription);
+  }, []); // Empty dependency array ensures it runs only once on mount
 
   return (
     <div className='ai-image-generator'>
@@ -78,17 +88,6 @@ const AiGeneratedRecipe = () => {
         <div className='image'>
           <img src={image_url} alt='Generated Image' />
         </div>
-        <input
-          type='text'
-          ref={inputRef}
-          className='search-input'
-          placeholder='Search for a recipe'
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button className='generate-btn' onClick={handleFormSubmit}>
-          Generate
-        </button>
       </div>
       <div>
         <h3>Generated Description:</h3>
