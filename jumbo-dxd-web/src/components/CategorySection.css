@@ -30,3 +30,6 @@
 .recipe-extras h3 {
   inline-size: 100%;
 }
+.filter-tag{
+  height: fit-content;
+}
