@@ -5,24 +5,34 @@
 }
 
 .clever-header {
-    width: 390px;
-    height: 138px;
+    width: 370px;
+  
     background-color: #2d8144;
-    margin-top: auto;
-    z-index: 1; /* Add z-index to ensure it stays on top */
+   
+    
 padding-left: 20px;
+display: flex;
+overflow: hidden;
+
 
     
 }
 
 .clever-header p{
     color: #FFF;
-width: 70%;
+
 
     font-size: 16px;
 }
 
 .clever-header h2{
     color: #FFF;
-    font-size: 24px;
+    font-size: 22px;
 }
+.clever-header img{
+    margin-right: auto;
+}
+.food-clever-container{
+    display: flex;
+    flex-direction: column;
+justify-content: space-between ;}

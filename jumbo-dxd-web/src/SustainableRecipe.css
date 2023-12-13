@@ -1,0 +1,14 @@
+.filter-tags {
+    display: flex;
+    width: 100vw;
+    overflow-x: scroll;
+  }
+  .filter-tag {
+    padding: 1px 10px;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background-color: #FFF;
+    cursor: pointer;
+    margin:10px ;
+  }
+  
