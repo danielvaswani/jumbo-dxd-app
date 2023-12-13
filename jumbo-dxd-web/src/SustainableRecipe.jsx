@@ -31,7 +31,7 @@ const SustainableRecipe = () => {
   const [aiRecipeList, setAIRecipeList] = useState([]);
 
   const aiRecipeCategory = {
-    title: "Ai generated recipes",
+    title: "Familiar recipes",
     description: "These recipes really fit you!",
     recipeList: aiRecipeList,
   };
@@ -73,11 +73,11 @@ const SustainableRecipe = () => {
       description: "The most delicious recipes at the moment.",
       recipeList: recipes.slice(0, 3),
     },
-    {
-      title: "Comfort meals",
-      description: "These recipes really make you happy.",
-      recipeList: recipes.slice(4, 7),
-    },
+    // {
+    //   title: "Comfort meals",
+    //   description: "These recipes really make you happy.",
+    //   recipeList: recipes.slice(4, 7),
+    // },
     {
       title: "Done in 25 minutes",
       description: "Fast and yummy!",
@@ -160,7 +160,7 @@ const SustainableRecipe = () => {
         </p>
       </div>
       {aiRecipeList !== undefined && aiRecipeList.length > 0 && (
-        <CategorySection category={aiRecipeCategory} alternateColor />
+        <CategorySection category={aiRecipeCategory} />
       )}
       {categories.map((c) => (
         <CategorySection category={c} key={c.title} handleClick={openRecipe} />
