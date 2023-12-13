@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Jumbo TheSans";
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -15,6 +15,30 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+@font-face {
+  font-family: "Jumbo TheSans";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(./assets/Jumbo\ TheSans\ Black-normal-900-100.ttf) format("woff2");
+}
+
+@font-face {
+  font-family: "Jumbo TheSans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(./assets/Jumbo\ TheSans-normal-700-100.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: "Jumbo TheSans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./assets/Jumbo\ TheSans-normal-400-100.ttf) format("ttf");
 }
 
 a {
