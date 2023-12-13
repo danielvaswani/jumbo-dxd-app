@@ -35,7 +35,7 @@ export const generateContent = async (inputValue) => {
             messages: [
               {
                 role: 'system',
-                content: `Give ingredients and description of ${inputValue} and keep it consistent and list the ingredients seperstely and description in steps below`,
+                content: inputValue,
               },
             ],
           }),

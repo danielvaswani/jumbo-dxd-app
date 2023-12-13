@@ -7,6 +7,7 @@ import CategorySection from "./components/CategorySection";
 import { useEffect, useState } from "react";
 import { getRecipes } from "./store/recipes";
 import { useNavigate } from "react-router-dom";
+import { generateContent } from "./store/aiRecipeGenerator.js";
 
 const tags = [
   "Under 30",
@@ -37,13 +38,14 @@ const SustainableRecipe = () => {
 
   const mockRecipeList = [
     {
-        image: "https://www.jumbo.com/~/media/images/jumbo-2020/recipes/week-41/week-41-recipe-1.jpg?h=250&la=en&w=250",
-        title: "Pasta Carbonara",
-        description: "A classic Italian pasta dish.",
-        numberOfIngredients: 5,
-        cookingTime: 30,
-    }
-  ]
+      image:
+        "https://www.jumbo.com/~/media/images/jumbo-2020/recipes/week-41/week-41-recipe-1.jpg?h=250&la=en&w=250",
+      title: "Pasta Carbonara",
+      description: "A classic Italian pasta dish.",
+      numberOfIngredients: 5,
+      cookingTime: 30,
+    },
+  ];
 
   const addPreference = (preference) => {
     setPreferences([...preferences, preference]);
@@ -51,7 +53,13 @@ const SustainableRecipe = () => {
   };
 
   const generateAIRecipes = async () => {
-    const prompt = "Can you generate 25 recipes that is " + preferences.join(", ") + " in the format of " + JSON.stringify(mockRecipeList);
+    const prompt =
+      "Can you generate 15 recipes that is " +
+      preferences.join(", ") +
+      " in the format of " +
+      JSON.stringify(mockRecipeList);
+    // const recipes = await generateContent(prompt);
+    setAIRecipeList(recipes);
   };
 
   const removePreference = (preference) => {
@@ -151,7 +159,9 @@ const SustainableRecipe = () => {
           requirements.
         </p>
       </div>
-      <CategorySection category={aiRecipeCategory} alternateColor />
+      {aiRecipeList !== undefined && aiRecipeList.length > 0 && (
+        <CategorySection category={aiRecipeCategory} alternateColor />
+      )}
       {categories.map((c) => (
         <CategorySection category={c} key={c.title} handleClick={openRecipe} />
       ))}
