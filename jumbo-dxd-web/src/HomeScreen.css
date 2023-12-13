@@ -20,10 +20,10 @@ margin-top: auto;
   }
   
   .content {
-    margin-top: 50px; /* Adjust the margin based on the height of your header */
-    padding: 20px; /* Add padding to create space for the fixed header */
-    width: 100%;
+    margin-top: 50px;
+    width: 95%;
   }
+
 .refresh-btn{
     width: 103px;
 height: 35px;
@@ -43,9 +43,11 @@ vertical-align: middle;
 flex-shrink: 0;
 border-radius: 15px 15px 0px 15px;
 text-align: left;
+position: relative;
+margin-bottom: 25px;
 }
 
-.p-1{
+.para-1{
     color: #FFF;
 font-family: Jumbo TheSans;
 font-size: 24px;
@@ -53,7 +55,7 @@ font-style: normal;
 font-weight: 700;
 
 }
-.p-2{
+.para-2{
     color: #FFF;
 font-family: Inter;
 font-size: 18px;
@@ -62,12 +64,14 @@ font-weight: 400;
 line-height: 22px; /* 122.222% */
 }
 .image-container-1{
-    margin-left: 71%;
-    margin-top: -25%;
+    position: absolute;
+    top: 0;
+    right: 10%;
 }
 .image-container-2{
-    margin-left: 90%;
-    margin-top: 0.8%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 .text-container{
     margin-top: 5%;

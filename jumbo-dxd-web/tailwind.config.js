@@ -1,9 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: "Jumbo TheSans",
+        serif: "Jumbo TheSans",
+        mono: "Jumbo TheSans",
+      }
+    },
   },
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   plugins: [require("daisyui")],
-};
+}
