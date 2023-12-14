@@ -5,6 +5,7 @@ import RecipePage from "../RecipePage.jsx";
 import Root from "./root.jsx";
 import SustainableRecipe from "../SustainableRecipe.jsx";
 import AiGeneratedRecipe from "../AiGeneratedRecipe.jsx"
+import Favoriterecipe from "../Favoriterecipe.jsx";
   
   const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ import AiGeneratedRecipe from "../AiGeneratedRecipe.jsx"
     {
       path: "/sustainable",
       element: <SustainableRecipe/>
+    },
+    {
+      path: "/favorite",
+      element: <Favoriterecipe/>
     },
     {
       path: "/aiRecipe",

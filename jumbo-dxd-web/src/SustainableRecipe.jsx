@@ -20,7 +20,7 @@ import tea from "./assets/tea.jpg";
 const images = [apple, burger, kitchen, oven, plate, salad, tea];
 
 const tags = [
-  "Under 30",
+  "Spicy",
   "Breakfast",
   "Lunch",
   "Dessert",
@@ -155,6 +155,8 @@ const SustainableRecipe = () => {
       aiRecipeList.find((recipe) => recipe._id === id);
     navigate(`/recipe/${id}`, { state: { recipe: recipe } });
   };
+  const openFavorite = () => {
+    navigate(`/favorite/`);};
 
   useEffect(() => {
     fetchData();
@@ -223,7 +225,7 @@ const SustainableRecipe = () => {
         </p>
       </div>
       <CategorySection category={favoriteRecipe} alternateColor />
-      <button className="rounded-full bg-white text-center border-gray-200 mx-8 py-1 flex gap-2 justify-center items-center">
+      <button onClick={openFavorite} className="rounded-full bg-white text-center border-gray-200 mx-8 py-1 flex gap-2 justify-center items-center">
         See more favourite recipes
       </button>
     </div>
