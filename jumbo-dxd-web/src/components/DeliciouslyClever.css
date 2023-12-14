@@ -37,3 +37,11 @@ overflow: hidden;
     display: flex;
     flex-direction: column;
 justify-content: space-between ;}
+.clever-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.clever-content h2{
+align-self: flex-start;}

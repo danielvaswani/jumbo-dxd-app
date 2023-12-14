@@ -7,7 +7,8 @@ const DeliciouslyClever = () => {
     return (
         <div className="deliciously-clever-wrapper">
             <div className="clever-header">
-                <div className="clever-content"><h2>Deliciously clever!</h2>
+                <div className="clever-content">
+                    <h2>Deliciously clever!</h2>
                 <p>Your recipes, your style! Freshly made by our Robot Chef</p>
                 </div>
                
