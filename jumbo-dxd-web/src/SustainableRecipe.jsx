@@ -4,10 +4,20 @@ import DeliciouslyClever from "./components/DeliciouslyClever";
 import header from "./img/sustainable-header.png";
 import SearchBar from "./components/searchbar";
 import CategorySection from "./components/CategorySection";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { getRecipes } from "./store/recipes";
 import { useNavigate } from "react-router-dom";
 import { generateContent } from "./store/aiRecipeGenerator.js";
+
+import apple from "./assets/apple.jpg";
+import burger from "./assets/burger.jpg";
+import kitchen from "./assets/kitchen.jpg";
+import oven from "./assets/oven.jpg";
+import plate from "./assets/plate.jpg";
+import salad from "./assets/saladbowl.jpg";
+import tea from "./assets/tea.jpg";
+
+const images = [apple, burger, kitchen, oven, plate, salad, tea];
 
 const tags = [
   "Under 30",
@@ -38,12 +48,31 @@ const SustainableRecipe = () => {
 
   const mockRecipeList = [
     {
+      _id: "pasta-carbonara-ai",
       image:
         "https://www.jumbo.com/~/media/images/jumbo-2020/recipes/week-41/week-41-recipe-1.jpg?h=250&la=en&w=250",
       title: "Pasta Carbonara",
       description: "A classic Italian pasta dish.",
       numberOfIngredients: 5,
       cookingTime: 30,
+      ingredients: [
+        "400 g of  spaghetti",
+        "1 cup of fresh basil leaves",
+        "4 garlic cloves",
+        "1/4 cup olive oil",
+        "Salt and pepper to taste",
+      ],
+      instructions: [
+        "Cook 400 g pasta according to the instructions on the package.",
+        "While the pasta is cooking, chop about 6-8 tomatoes, use 1 cup fresh basil leaves and mince 4 garlic cloves.",
+        "In a pan, heat 1/4 cup of olive oil over medium heat, then add the chopped garlic and fry for a minute.",
+        "Add the chopped tomatoes and cook for a few minutes until soft.",
+        "Stir in the fresh basil and season with salt and pepper.",
+        "Mix the cooked pasta with the tomato basil sauce.",
+        "Serve and, if desired, sprinkle with grated Parmesan cheese.",
+      ],
+      dishType: "Main Dish",
+      servings: 4,
     },
   ];
 
@@ -54,12 +83,21 @@ const SustainableRecipe = () => {
 
   const generateAIRecipes = async () => {
     const prompt =
-      "Can you generate 15 recipes that is " +
+      "Do not include any explanation, I need a predictable JSON response, generate 5 recipes that is " +
       preferences.join(", ") +
       " in the format of " +
       JSON.stringify(mockRecipeList);
-    // const recipes = await generateContent(prompt);
-    setAIRecipeList(recipes);
+    const recipes = await generateContent(prompt);
+    console.log(recipes);
+    // setAIRecipeList(recipes);
+    if (recipes !== undefined && recipes.length > 0) {
+      const withRandomImages = recipes.map((r) => ({
+        ...r,
+        image: images[Math.floor(Math.random() * images.length)],
+      }));
+      return withRandomImages;
+    }
+    return recipes;
   };
 
   const removePreference = (preference) => {
@@ -103,9 +141,18 @@ const SustainableRecipe = () => {
     setRecipes(data);
   };
 
+  const fetchDataMemoized = useCallback(() => {
+    generateAIRecipes().then((result) => {
+      setAIRecipeList(result);
+      console.log(result);
+    });
+  }, [preferences]);
+
   const openRecipe = (id) => {
     console.log(id);
-    const recipe = recipes.find((recipe) => recipe._id === id);
+    const recipe =
+      recipes.find((recipe) => recipe._id === id) ??
+      aiRecipeList.find((recipe) => recipe._id === id);
     navigate(`/recipe/${id}`, { state: { recipe: recipe } });
   };
 
@@ -114,8 +161,8 @@ const SustainableRecipe = () => {
   }, []);
 
   useEffect(() => {
-    generateAIRecipes();
-  }, [preferences]);
+    fetchDataMemoized();
+  }, [fetchDataMemoized, preferences]);
 
   return (
     <div
@@ -159,8 +206,8 @@ const SustainableRecipe = () => {
           requirements.
         </p>
       </div>
-      {aiRecipeList !== undefined && aiRecipeList.length > 0 && (
-        <CategorySection category={aiRecipeCategory} />
+      {aiRecipeList !== undefined && !!aiRecipeList.length && (
+        <CategorySection category={aiRecipeCategory} handleClick={openRecipe} />
       )}
       {categories.map((c) => (
         <CategorySection category={c} key={c.title} handleClick={openRecipe} />

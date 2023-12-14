@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import "./CategorySection.css";
 
 const CategorySection = (props) => {
@@ -7,8 +7,8 @@ const CategorySection = (props) => {
   const handleClick = props.handleClick;
 
   const addPreference = (preference) => {
-    setPreferences([...preferences, preference])
-  }
+    setPreferences([...preferences, preference]);
+  };
   return (
     <div className="category-section flex flex-col gap-2">
       <h3 className="font-bold">{category.title}</h3>
@@ -45,7 +45,7 @@ const CategorySection = (props) => {
                   className="text-xs"
                   style={{ color: alternateColor ? "#000000" : "#ffffff" }}
                 >
-                  {r.ingredients.length} Ingredients
+                  {r.numberOfIngredients} Ingredients
                 </p>
                 <p
                   className="text-xs"

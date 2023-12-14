@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   faClock,
   faUtensils,
@@ -9,6 +9,7 @@ import {
 import "./RecipePage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation } from "react-router-dom";
+import { generateImage } from "./store/aiRecipeGenerator.js";
 
 // const recipesHardCoded = [
 //   {
@@ -43,15 +44,32 @@ import { useLocation } from "react-router-dom";
 const RecipePage = (props) => {
   const location = useLocation();
   const { recipe } = location.state;
+  const [imageUrl, setImageUrl] = useState(recipe.image);
 
   useEffect(() => {
     setTimeout(() => window.scrollTo(0, localStorage.getItem("position")), 0);
   }, []);
 
+  useEffect(() => {
+    let ignore = false;
+    const fetchImage = async () => {
+      const generatedImage = await generateImage(recipe.title);
+      setImageUrl(generatedImage);
+    };
+
+    // call the function
+    fetchImage()
+      // make sure to catch any error
+      .catch(console.error);
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   return (
     <div className="recipe-page">
       {/* Image */}
-      <img src={recipe.image} alt="Recipe" className="recipe-image" />
+      <img src={imageUrl} alt="Recipe" className="recipe-image" />
 
       {/* Recipe Title and Icon */}
       <div className="recipe-header">

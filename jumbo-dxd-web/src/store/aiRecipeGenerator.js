@@ -1,24 +1,24 @@
 export const generateContent = async (inputValue) => {
     try {
-      const imageResponse = await fetch(
-        'https://api.openai.com/v1/images/generations',
-        {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-            Authorization: import.meta.env.VITE_OPENAI_API_KEY,
-            'User-Agent': 'Chrome',
-          },
-          body: JSON.stringify({
-            prompt: `${inputValue}`,
-            n: 1,
-            model: 'dall-e-3',
-            size: '1024x1024',
-          }),
-        }
-      );
-      const imageData = await imageResponse.json();
-      const imageUrl = imageData.data[0].url ?? "https://cdn-icons-png.flaticon.com/512/4080/4080032.png";
+    //   const imageResponse = await fetch(
+    //     'https://api.openai.com/v1/images/generations',
+    //     {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-type': 'application/json',
+    //         Authorization: import.meta.env.VITE_OPENAI_API_KEY,
+    //         'User-Agent': 'Chrome',
+    //       },
+    //       body: JSON.stringify({
+    //         prompt: `${inputValue}`,
+    //         n: 1,
+    //         model: 'dall-e-3',
+    //         size: '1024x1024',
+    //       }),
+    //     }
+    //   );
+    //   const imageData = await imageResponse.json();
+    //   const imageUrl = imageData.data[0].url ?? "https://cdn-icons-png.flaticon.com/512/4080/4080032.png";
     //   setImage_url(imageUrl);
 
       const descriptionResponse = await fetch(
@@ -50,16 +50,37 @@ export const generateContent = async (inputValue) => {
 
       const descriptionData = await descriptionResponse.json() ?? { role: "system", message: { content: "No description found" } };
     //   setGeneratedDescription(descriptionData.choices[0].message.content);
+
+    return  JSON.parse(descriptionData.choices[0].message.content.replace(/\\/g, ''));
     
-    console.log({
-        imageUrl,
-        descriptionData
-    
-    })
-    return {
-        imageUrl,
-        description : descriptionData.choices[0].message.content
+    } catch (error) {
+      console.error('Error fetching data: ', error);
     }
+  };
+
+  export const generateImage = async (inputValue) => {
+    try {
+      const imageResponse = await fetch(
+        'https://api.openai.com/v1/images/generations',
+        {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: import.meta.env.VITE_OPENAI_API_KEY,
+            'User-Agent': 'Chrome',
+          },
+          body: JSON.stringify({
+            prompt: `${inputValue}`,
+            n: 1,
+            model: 'dall-e-3',
+            size: '1024x1024',
+          }),
+        }
+      );
+      const imageData = await imageResponse.json();
+      const imageUrl = imageData.data[0].url ?? "https://cdn-icons-png.flaticon.com/512/4080/4080032.png";
+    //   setImage_url(imageUrl);
+    return imageUrl;
     } catch (error) {
       console.error('Error fetching data: ', error);
     }

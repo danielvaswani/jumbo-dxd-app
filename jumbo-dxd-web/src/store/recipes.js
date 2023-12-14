@@ -20,6 +20,7 @@ export const getRecipes = async (pageNumber = 1) => {
     return data.map((recipe) => ({
         _id: recipe._id,
         ingredients: recipe.ingredients.map((i) => i.name),
+        numberOfIngredients: recipe.ingredients.length,
         instructions: recipe.instructions,
         title: recipe.title,
         image: recipe.imageInfo.filter((i) => i.width === 560)[0].url,
