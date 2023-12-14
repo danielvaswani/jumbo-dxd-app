@@ -1,8 +1,8 @@
 import React from 'react';
 import './DeliciouslyClever.css';
 import robotchef from '../img/Group.svg';
-import s1 from '../img/s1.png';
-import s2 from '../img/s2.png';
+import s1 from '../img/S1.png';
+import s2 from '../img/S2.png';
 const DeliciouslyClever = () => {
     return (
         <div className="deliciously-clever-wrapper">
