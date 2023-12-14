@@ -24,6 +24,7 @@ const tags = [
   "Breakfast",
   "Lunch",
   "Dessert",
+  "Chinese",
   "Dinner",
   "Snack",
   "Hearty",
@@ -32,11 +33,7 @@ const tags = [
 
 const SustainableRecipe = () => {
   const [recipes, setRecipes] = useState([]);
-  const [preferences, setPreferences] = useState([
-    "Vegetarian",
-    "Vegan",
-    "Spicy",
-  ]);
+  const [preferences, setPreferences] = useState(["Chinese", "Spicy"]);
 
   const [aiRecipeList, setAIRecipeList] = useState([]);
 
@@ -156,7 +153,8 @@ const SustainableRecipe = () => {
     navigate(`/recipe/${id}`, { state: { recipe: recipe } });
   };
   const openFavorite = () => {
-    navigate(`/favorite/`);};
+    navigate(`/favorite/`);
+  };
 
   useEffect(() => {
     fetchData();
@@ -225,7 +223,10 @@ const SustainableRecipe = () => {
         </p>
       </div>
       <CategorySection category={favoriteRecipe} alternateColor />
-      <button onClick={openFavorite} className="rounded-full bg-white text-center border-gray-200 mx-8 py-1 flex gap-2 justify-center items-center">
+      <button
+        onClick={openFavorite}
+        className="rounded-full bg-white text-center border-gray-200 mx-8 py-1 flex gap-2 justify-center items-center"
+      >
         See more favourite recipes
       </button>
     </div>
