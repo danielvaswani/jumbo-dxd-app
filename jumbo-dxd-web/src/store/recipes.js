@@ -46,12 +46,12 @@ export const getRecipes = async (pageNumber = 1) => {
 };
 
 export const addRecipeToFavorites = async (recipe) => {
-    await setDoc(doc(db, "favorites", recipe._id), recipe);
+  await setDoc(doc(db, "favorites", recipe._id), recipe);
 };
 
 export const deleteRecipeFromFavorites = async (recipe) => {
-    await db.collection('favorites').doc(recipe._id).delete();
-};ç
+  await db.collection("favorites").doc(recipe._id).delete();
+};
 
 export const getFavorites = async () => {
   const q = query(collection(db, "favorites"));
