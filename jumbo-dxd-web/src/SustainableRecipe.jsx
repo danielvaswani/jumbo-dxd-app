@@ -8,6 +8,8 @@ import { useEffect, useState, useCallback } from "react";
 import { getRecipes } from "./store/recipes";
 import { useNavigate } from "react-router-dom";
 import { generateContent } from "./store/aiRecipeGenerator.js";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import apple from "./assets/apple.jpg";
 import burger from "./assets/burger.jpg";
@@ -36,6 +38,7 @@ const SustainableRecipe = () => {
   const [preferences, setPreferences] = useState(["Chinese", "Spicy"]);
 
   const [aiRecipeList, setAIRecipeList] = useState([]);
+  const [loading, setLoading] = useState(false); 
 
   const aiRecipeCategory = {
     title: "Familiar recipes",
@@ -79,11 +82,13 @@ const SustainableRecipe = () => {
   };
 
   const generateAIRecipes = async () => {
+    setLoading(true); 
     const prompt =
       "Do not include any explanation, I need a predictable JSON response, generate 5 recipes that is " +
       preferences.join(", ") +
       " in the format of " +
       JSON.stringify(mockRecipeList);
+      try{
     const recipes = await generateContent(prompt);
     console.log(recipes);
     // setAIRecipeList(recipes);
@@ -92,9 +97,14 @@ const SustainableRecipe = () => {
         ...r,
         image: images[Math.floor(Math.random() * images.length)],
       }));
+    
       return withRandomImages;
     }
     return recipes;
+  } finally{
+    setLoading(false); 
+  }
+
   };
 
   const removePreference = (preference) => {
@@ -208,9 +218,17 @@ const SustainableRecipe = () => {
           requirements.
         </p>
       </div>
+      {loading && aiRecipeList.length === 0 && (
+        <div className="skeleton-container" style={{ position: 'relative' }} >
+          <p style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: '1' }}>Loading personalised recipes...</p>
+           <Skeleton height={100} count={1} style={{ position: 'relative', zIndex: '0' }} />
+        </div>
+      )}
       {aiRecipeList !== undefined && !!aiRecipeList.length && (
         <CategorySection category={aiRecipeCategory} handleClick={openRecipe} />
       )}
+
+
       {categories.map((c) => (
         <CategorySection category={c} key={c.title} handleClick={openRecipe} />
       ))}
