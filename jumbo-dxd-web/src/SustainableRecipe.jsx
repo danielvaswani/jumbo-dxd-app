@@ -182,9 +182,11 @@ const SustainableRecipe = () => {
             className="filter-tag"
             key={t}
             style={{
-              border: `${preferences.indexOf(t) > 0 ? "2px" : "1px"} solid ${
+              border: `${preferences.indexOf(t) > 0 ? "1.5px" : "1px"} solid ${
                 preferences.indexOf(t) > 0 ? "#2d8144" : "#000000"
-              }`,
+              } `,
+              backgroundColor: `${preferences.indexOf(t) > 0 ? "#39864F80" : "white"} `,
+              
             }}
             onClick={() =>
               preferences.indexOf(t) > 0
